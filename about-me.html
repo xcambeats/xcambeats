@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me — XCamBeats</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Epilogue:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d1520;
+      --surface: #111e2e;
+      --rule: #1e2f44;
+      --white: #e8eef5;
+      --muted: #5a7a99;
+      --blue: #3a7bd4;
+      --blue-light: #6fa3e8;
+      --gold: #c9a84c;
+      --gold-light: #e0c070;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Epilogue', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+```
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 300;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(13,21,32,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--gold); }
+
+.nav-ext {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+}
+.nav-ext:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 7rem 3rem 5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  margin-bottom: 1.5rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 9rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  max-width: 700px;
+  color: var(--white);
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-tagline {
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 440px;
+  font-weight: 300;
+}
+
+/* ── CONTENT SECTIONS ── */
+.content-section {
+  padding: 5rem 3rem;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.section-num {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--rule);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  margin-bottom: 1rem;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.75rem;
+  color: var(--white);
+}
+
+.section-heading em { font-style: italic; color: var(--gold); }
+
+.prose {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--muted);
+  font-weight: 300;
+  max-width: 560px;
+}
+
+.prose p + p { margin-top: 1.25rem; }
+
+.prose strong { color: var(--white); font-weight: 500; }
+
+/* fact list */
+.fact-list {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 560px;
+}
+
+.fact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.fact-row:first-child { border-top: 1px solid var(--rule); }
+
+.fact-key {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.fact-val {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--white);
+}
+.fact-val.gold { color: var(--gold); }
+.fact-val.blue { color: var(--blue-light); }
+
+/* ── LINKS SECTION ── */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  max-width: 560px;
+}
+
+.link-tile {
+  background: var(--surface);
+  padding: 1.25rem 1.5rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.link-tile:hover { background: #162233; }
+
+.link-tile-label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.link-tile-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--white);
+}
+
+.link-tile-arrow {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--gold);
+  margin-top: 0.25rem;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 2.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.footer-note {
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.footer-note a { color: var(--gold); text-decoration: none; }
+
+@media (max-width: 768px) {
+  nav { padding: 1.25rem 1.5rem; }
+  .nav-links { display: none; }
+  #hero { padding: 6rem 1.5rem 4rem; }
+  .content-section { grid-template-columns: 1fr; gap: 1.5rem; padding: 4rem 1.5rem; }
+  .section-num { font-size: 2.5rem; }
+  footer { padding: 2rem 1.5rem; justify-content: center; text-align: center; }
+}
+```
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+
+  <nav>
+    <a class="nav-logo" href="https://xcambeats.net">XCamBeats</a>
+    <ul class="nav-links">
+      <li><a href="#about" class="active">About</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#links">Links</a></li>
+    </ul>
+    <a class="nav-ext" href="https://xrenbeats.com/team/xcambeats" target="_blank" rel="noopener">XrenBeats Profile ↗</a>
+  </nav>
+
+  <!-- HERO -->
+
+  <section id="hero">
+    <p class="hero-eyebrow">// About Me</p>
+    <h1 class="hero-title">I'm XCamBeats.<br><em>I make music.</em></h1>
+    <p class="hero-tagline">
+      <!-- [help] Add a personal tagline or short intro sentence here -->
+      Producer. Artist. Part of the XrenBeats collective.
+    </p>
+  </section>
+
+  <!-- ABOUT -->
+
+  <div class="content-section" id="about">
+    <div class="section-num">01</div>
+    <div>
+      <p class="section-eyebrow">// Who I Am</p>
+      <h2 class="section-heading">About <em>Me.</em></h2>
+      <div class="prose">
+        <!-- [help] Write XCamBeats' personal bio here. Replace this placeholder text. -->
+        <p>XCamBeats is an independent producer and artist, crafting original music from scratch. A member of the <strong>XrenBeats</strong> collective, the work speaks for itself — beats built with intention, albums made to last.</p>
+        <p>Every release is fully original, no shortcuts. The process is everything.</p>
+      </div>
+      <div class="fact-list">
+        <div class="fact-row">
+          <span class="fact-key">Alias</span>
+          <span class="fact-val">XCamBeats</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Role</span>
+          <span class="fact-val">Producer &amp; Artist</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Collective</span>
+          <span class="fact-val gold">XrenBeats</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Genre</span>
+          <!-- [help] Fill in XCamBeats' genre(s) -->
+          <span class="fact-val">—</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Based</span>
+          <!-- [help] Fill in location if desired, or remove this row -->
+          <span class="fact-val">—</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MUSIC -->
+
+  <div class="content-section" id="music">
+    <div class="section-num">02</div>
+    <div>
+      <p class="section-eyebrow">// Discography</p>
+      <h2 class="section-heading">The <em>Music.</em></h2>
+      <div class="prose">
+        <p>One album out now. More coming.</p>
+      </div>
+      <div class="fact-list">
+        <div class="fact-row">
+          <span class="fact-key">Album</span>
+          <span class="fact-val">Inhale the Pollon</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Year</span>
+          <span class="fact-val">2025</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Tracks</span>
+          <!-- [help] Fill in track count -->
+          <span class="fact-val gold">—</span>
+        </div>
+      </div>
+      <div style="margin-top: 2rem;">
+        <a href="https://xrenbeats.com/team/xcambeats#albums" style="
+          font-family: var(--font-mono);
+          font-size: 0.62rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--white);
+          text-decoration: none;
+          border-bottom: 1px solid var(--rule);
+          padding-bottom: 2px;
+        " onmouseover="this.style.color='#c9a84c';this.style.borderColor='#c9a84c'"
+           onmouseout="this.style.color='var(--white)';this.style.borderColor='var(--rule)'">
+          View Full Discography ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LINKS -->
+
+  <div class="content-section" id="links">
+    <div class="section-num">03</div>
+    <div>
+      <p class="section-eyebrow">// Find Me</p>
+      <h2 class="section-heading">Links.</h2>
+      <div class="links-grid">
+        <a class="link-tile" href="https://xrenbeats.com" target="_blank" rel="noopener">
+          <span class="link-tile-label">Collective</span>
+          <span class="link-tile-name">XrenBeats</span>
+          <span class="link-tile-arrow">↗</span>
+        </a>
+        <a class="link-tile" href="https://xrenbeats.com/team/xcambeats" target="_blank" rel="noopener">
+          <span class="link-tile-label">Team Profile</span>
+          <span class="link-tile-name">XrenBeats Profile</span>
+          <span class="link-tile-arrow">↗</span>
+        </a>
+        <!-- [help] Add real social/streaming links below. Replace # with actual URLs. -->
+        <a class="link-tile" href="#" target="_blank" rel="noopener">
+          <span class="link-tile-label">Music</span>
+          <span class="link-tile-name">SoundCloud</span>
+          <span class="link-tile-arrow">↗</span>
+        </a>
+        <a class="link-tile" href="#" target="_blank" rel="noopener">
+          <span class="link-tile-label">Social</span>
+          <span class="link-tile-name">Instagram</span>
+          <span class="link-tile-arrow">↗</span>
+        </a>
+        <a class="link-tile" href="#" target="_blank" rel="noopener">
+          <span class="link-tile-label">Streaming</span>
+          <span class="link-tile-name">Spotify</span>
+          <span class="link-tile-arrow">↗</span>
+        </a>
+        <a class="link-tile" href="#" target="_blank" rel="noopener">
+          <span class="link-tile-label">Video</span>
+          <span class="link-tile-name">YouTube</span>
+          <span class="link-tile-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="footer-logo">XCamBeats</div>
+    <p class="footer-note">Part of <a href="https://xrenbeats.com">XrenBeats</a> &nbsp;·&nbsp; © 2025 XCamBeats</p>
+  </footer>
+
+</body>
+</html>
